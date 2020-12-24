@@ -17,7 +17,7 @@ class Heap(object):  #this is the implementation of an algorithm that searches o
         self.heap[self.currentPosition] = item
         self.fixUp(self.currentPosition) #checking to see that we are not violating the priority queue properties
 
-    def fixUp(self, index):  #this also solves for whenever we delete parent node
+    def fixUp(self, index):  #this also solves for whenever we delete parent node, the root node since it has the highest priority
 
         parentIndex = int((index  -1 ) //2)   #divide without remainder, the two is because a parent node has two  children
 

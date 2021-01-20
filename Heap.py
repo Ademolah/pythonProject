@@ -1,4 +1,6 @@
 
+#we have to bear in mind that the heap is in form of array
+
 class Heap(object):  #this is the implementation of an algorithm that searches or returns objects/values with the highest priority, hence undelying ADS name, priority queue
 
     HEAP_SIZE = 11
@@ -30,17 +32,24 @@ class Heap(object):  #this is the implementation of an algorithm that searches o
 
     def get_max(self):
 
-        return self.heap[0] #this is for Maximum heap where the root node at index 0 has the highest value
+        return self.heap[0]
 
 
     def heapsort(self):
 
-        for i in range(0 ,self.currentPosition + 1): #traversing backward from -1 since initially, self.currentposition = -1, NB: the +1 in this code means the next 'last position'
-            temp = self.heap[0]              #parent or root index, starting from the parent index
-            print("%d " % temp)              #be printing the parent index because the have the highest priority
-            self.heap[0] = self.heap[self.currentPosition - i]  #last element iterated
-            self.heap[self.currentPosition -i] = temp       #that is the new parent again
+        for i in range(0 ,self.currentPosition + 1):
+            temp = self.heap[0]
+            print("%d " % temp)
+            self.heap[0] = self.heap[self.currentPosition - i]
+            self.heap[self.currentPosition -i] = temp
             self.fixDown(0 ,self.currentPosition - i -1)
+
+
+        #We store the max (in a max heap) or the min (in a in heap) item in the temp variable. So in every iteration we take the root node which is the min (or max item).
+        # And we put in into the last slot of the array -
+        # we represent the heap with a one-dimensional array if you may recall.
+        # So what does it mean? Of course it means that in every iteration we have to deal with fewer and fewer items because we have already considered some items in previous iterations.
+        # This is why we have to decrement current_position-i-
 
     def fixDown(self, index, upto):
 
